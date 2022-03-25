@@ -5,7 +5,18 @@ class Category:
         self.balance = 0.0
 
     def __repr__(self) -> str:
-        pass
+        title_line =f"{self.name:*^30}\n"
+        list_line = ""
+        total = 0.0
+
+        for item in self.ledger:
+            list_line += f"{item['description'][:23] :<23}{item['amount'][:7] :>7.2f}\n"
+            total += item['amount']
+
+        total_line = f"Total: {total:.2f}"
+
+        return title_line + list_line + total_line
+
 
 
     def deposit(self, amount, description = ""):
